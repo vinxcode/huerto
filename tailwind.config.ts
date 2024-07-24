@@ -2,6 +2,7 @@
 
 const { addDynamicIconSelectors } = require('@iconify/tailwind')
 
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +19,7 @@ module.exports = {
         "light-green": "#B1D182",
         "light-grey": "#F4F1E9",
         "placeholder": "#8E8E8E",
+        "bg-light-grey": "#EEEEEE",
         btn: {
           background: "hsl(var(--btn-background))",
           "background-hover": "hsl(var(--btn-background-hover))",
@@ -28,5 +30,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors()],
 };

@@ -19,6 +19,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.8.1",
     "@iconify/json": "^2.2.230",
     "@iconify/tailwind": "^1.1.1",
     "@types/node": "20.11.5",
