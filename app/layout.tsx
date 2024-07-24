@@ -21,9 +21,16 @@ export default function RootLayout({
       <body className="bg-light-grey text-dark-grey">
         <main className="min-h-screen flex flex-col items-center">
           {children}
-          <h1 className="font-poppins">Heeeey im the layout</h1>
-          <footer>
-            <span className="icon-[tabler--book] text-4xl"></span>
+          <footer className="flex justify-evenly w-full text-xl py-5">
+            <a href="#">
+              <span className="icon-[tabler--book] text-2xl"></span>
+              <p>Diario</p>
+            </a>
+
+            <a href="#">
+              <span className="icon-[tabler--book] text-2xl"></span>
+              <p>Control</p>
+            </a>
 
           </footer>
         </main>
