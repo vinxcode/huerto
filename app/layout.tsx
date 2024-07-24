@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className="bg-light-grey text-dark-grey">
         <main className="min-h-screen flex flex-col items-center">
           {children}
-          <h1>Heeeey im the layout</h1>
+          <h1 className="font-poppins">Heeeey im the layout</h1>
           <footer>
             <span className="icon-[tabler--book] text-4xl"></span>
 
