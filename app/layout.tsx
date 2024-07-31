@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-bg-light-grey text-dark-grey font-poppins h-screen">
-        <main className="min-h-screen flex flex-col items-center">
+        <main className="min-h-screen flex flex-col items-center pb-20">
           {children}
           <footer className="flex justify-evenly w-full text-sm py-5 fixed bottom-0 bg-bg-light-grey shadow-2xl">
             {

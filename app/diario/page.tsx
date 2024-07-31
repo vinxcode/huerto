@@ -1,27 +1,26 @@
 import React from 'react'
+import { createClient } from "@/utils/supabase/server";
 
-const Diario = () => {
+const Diario = async () => {
+
+    const supabase = createClient();
+    const { data: diarios } = await supabase.from("diarios").select();
+
     return (
-        <div className='flex flex-col w-full items-start py-10 px-7'>
+        <section className='flex flex-col w-full items-start py-10 px-7 animate-in'>
             <h1 className="text-4xl font-bold ">Diario</h1>
-            <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 rounded-xl hover:bg-light-green hover:animate-in'>Actualizar diario</button>
-            <article className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2'>
-                <p className='text-dark-green'>7 de julio</p>
-                <p>Los tomates comenzaron a germinar, pero debo tener mucho cuidado con el riego ya que han pasado tres dias sin que llueva.</p>
-            </article>
-            <article className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2'>
-                <p className='text-dark-green'>7 de julio</p>
-                <p>Los tomates comenzaron a germinar, pero debo tener mucho cuidado con el riego ya que han pasado tres dias sin que llueva.</p>
-            </article>
-            <article className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2'>
-                <p className='text-dark-green'>7 de julio</p>
-                <p>Los tomates comenzaron a germinar, pero debo tener mucho cuidado con el riego ya que han pasado tres dias sin que llueva.</p>
-            </article>
-            <article className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2'>
-                <p className='text-dark-green'>7 de julio</p>
-                <p>Los tomates comenzaron a germinar, pero debo tener mucho cuidado con el riego ya que han pasado tres dias sin que llueva.</p>
-            </article>
-        </div>
+            <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 rounded-xl shadow-lg hover:bg-light-green hover:animate-in'>Actualizar diario</button>
+            {
+                diarios && (
+                    diarios.map(diario => (
+                        <a className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2 w-full shadow-lg'>
+                            <p className='text-dark-green'>{diario.fecha}</p>
+                            <p>{diario.notas}</p>
+                        </a>
+                    ))
+                )
+            }
+        </section>
     )
 }
 
