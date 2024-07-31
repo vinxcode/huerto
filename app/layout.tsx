@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className="bg-bg-light-grey text-dark-grey font-poppins h-screen">
         <main className="min-h-screen flex flex-col items-center">
           {children}
-          <footer className="flex justify-evenly w-full text-sm py-5 fixed bottom-0">
+          <footer className="flex justify-evenly w-full text-sm py-5 fixed bottom-0 bg-bg-light-grey shadow-2xl">
             {
               nav.map(link => (
                 <Link href={link.route} className="flex flex-col justify-center items-center gap-2">
