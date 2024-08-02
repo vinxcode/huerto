@@ -14,7 +14,7 @@ const Control = async () => {
         todos && (
           todos.map(todo => (
             <a className='bg-white rounded-xl w-full px-10 py-3 shadow-xl cursor-pointer mb-2'>
-              <h3 className='text-dark-green text-center font-light'>{todo.id_cultivo} - {todo.nombre_cultivo}</h3>
+              <h3 className='text-dark-green text-center font-light'>{todo.nombre_cultivo}</h3>
             </a>
           ))
         )

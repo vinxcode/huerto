@@ -1,5 +1,5 @@
-import Link from "next/link";
 import "./globals.css";
+import Navigation from '@/app/Navigation'
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -17,36 +17,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 
-  const nav = [
-    { 
-      icon: "icon-[tabler--book]",
-      linkName: "Diario",
-      route: "./diario"
-    },
-    { 
-      icon: "icon-[tabler--notes]",
-      linkName: "Control",
-      route: "./control"
-    }
-  ]
-
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className="bg-bg-light-grey text-dark-grey font-poppins h-screen">
-        <main className="min-h-screen flex flex-col items-center pb-20">
+        <main className="min-h-screen flex flex-col items-center pb-20 md:w-[766px] mx-auto">
           {children}
-          <footer className="flex justify-evenly w-full text-sm py-5 fixed bottom-0 bg-bg-light-grey shadow-2xl">
-            {
-              nav.map(link => (
-                <Link href={link.route} className="flex flex-col justify-center items-center gap-2">
-                  <span className={`${link.icon} text-2xl`}></span>
-                  <p>{link.linkName}</p>
-                </Link>
-              ))
-            }
+          <footer className="flex justify-evenly w-full text-sm py-5 fixed bottom-0 bg-bg-light-grey shadow-2xl md:w-[766px]">
+            <Navigation />
           </footer>
         </main>
-
       </body>
     </html>
   );
