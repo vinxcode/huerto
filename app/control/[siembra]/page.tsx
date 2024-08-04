@@ -1,9 +1,14 @@
-import React from 'react'
+'use client'
+
+import { useParams } from 'next/navigation'
 
 const Siembra = () => {
-  return (
-    <div>Siembra</div>
-  )
+
+    const { siembra } = useParams()
+
+    return (
+        <div>{ siembra }</div>
+    )
 }
 
 export default Siembra
