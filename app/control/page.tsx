@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link';
 import { createClient } from "@/utils/supabase/server";
 
 const Control = async () => {
@@ -13,9 +14,10 @@ const Control = async () => {
       {
         todos && (
           todos.map(todo => (
-            <a className='bg-white rounded-xl w-full px-10 py-3 shadow-xl cursor-pointer mb-2'>
+            <Link className='bg-white rounded-xl w-full px-10 py-3 shadow-xl cursor-pointer mb-2'
+            href={`/control/${todo.nombre_cultivo}`}>
               <h3 className='text-dark-green text-center font-light'>{todo.nombre_cultivo}</h3>
-            </a>
+            </Link>
           ))
         )
       }
