@@ -29,18 +29,19 @@ const Siembra = () => {
             <header className='bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl'>
                 <h1 className='text-4xl text-light-grey font-bold'>{siembra}</h1>
             </header>
+            <div className='grid grid-cols-2 p-3' >
+                {
+                    siembras && (
+                        siembras.map((siembra, index) => (
 
-            {
-                siembras && (
-                    siembras.map((siembra, index) => (
-                        <div className='grid grid-cols-2 p-3' key={index}>
-                            <a className='h-20 bg-light-green p-5 rounded-xl shadow-lg m-2 cursor-pointer hover:bg-light-grey'>
+                            <a className='h-20 bg-light-green p-5 rounded-xl shadow-lg m-2 cursor-pointer hover:bg-light-grey' key={index}>
                                 <p className='text-dark-grey'>{siembra.fecha_siembra}</p>
                             </a>
-                        </div>
-                    ))
-                )
-            }
+
+                        ))
+                    )
+                }
+            </div>
         </section>
     )
 }
