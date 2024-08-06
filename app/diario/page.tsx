@@ -9,7 +9,7 @@ const Diario = async () => {
     return (
         <section className='flex flex-col w-full items-start py-10 px-7 animate-in'>
             <h1 className="text-4xl font-bold ">Diario</h1>
-            <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 rounded-xl shadow-lg hover:bg-light-green hover:animate-in'>Actualizar diario</button>
+            <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 rounded-xl shadow-lg hover:bg-dark-grey hover:animate-in'>Actualizar diario</button>
             {
                 diarios && (
                     diarios.map(diario => (

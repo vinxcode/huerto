@@ -23,7 +23,7 @@ const Control = () => {
   return (
     <section className='flex flex-col w-full items-start py-10 px-7 animate-in'>
       <h1 className="text-4xl font-bold ">Control</h1>
-      <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 shadow-xl rounded-xl hover:bg-light-green hover:animate-in'>Agregar cultivo</button>
+      <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 shadow-xl rounded-xl hover:bg-dark-grey hover:animate-in'>Agregar cultivo</button>
       {
         cultivos && (
           cultivos.map(cultivo => (
