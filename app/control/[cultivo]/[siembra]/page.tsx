@@ -4,7 +4,6 @@ import { useParams, usePathname } from 'next/navigation'
 import { useStore } from '@/app/store/useStore'
 import { useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
-import Link from 'next/link'
 
 const detalleSiembra = () => {
 
@@ -18,7 +17,22 @@ const detalleSiembra = () => {
     const getSiembras = async () => {
       const { data, error } = await supabase
         .from('siembras')
-        .select()
+        .select(`
+          id_siembra,
+          fecha_siembra,
+          semillas_a_germinar,
+          semillas_germinadas,
+          plantines_trasplantados,
+
+          cultivos (
+            nombre_cultivo
+          ),
+          estado_cultivos(
+            id_estado_cultivo,
+            nombre_estado_cultivo
+          )
+
+        `)
         .eq('id_siembra', siembra)
       console.log(data)
       setDatos(data)
@@ -34,7 +48,8 @@ const detalleSiembra = () => {
         datos.map((dato, index) => (
           <section className='w-full flex flex-col items-center' key={index}>
             <header className='bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl'>
-              <h1 className='text-4xl text-light-grey font-bold'>{dato.fecha_siembra}</h1>
+              <h1 className='text-4xl text-light-grey font-bold'>{dato.cultivos.nombre_cultivo}</h1>
+              <p className='text-xl text-light-grey'>{dato.fecha_siembra}</p>
               <p></p>
             </header>
           </section>
