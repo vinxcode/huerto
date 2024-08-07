@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
 
-
 const Siembra = () => {
 
     const supabase = createClient()
@@ -14,9 +13,8 @@ const Siembra = () => {
     const pathname = usePathname()
     const { cultivo } = useParams()
     const idCultivo = useStore((state) => state.idCultivo)
+    const uodateIdSiembra = useStore((state) => state.updateIdSiembra)
     const [siembras, setSiembras] = useState([])
-
-    // console.log(pathname, `/1`)
 
     useEffect(() => {
         const getSiembras = async () => {
@@ -42,7 +40,7 @@ const Siembra = () => {
                         siembras.map((item, index) => (
 
                             <Link className='h-20 bg-light-green p-5 rounded-xl shadow-lg m-2 cursor-pointer hover:bg-light-grey' key={index}
-                                href={`/${item.id_siembra}`}>
+                                href={`./${cultivo}/${item.id_siembra}`} onClick={() => updateIdSiembra(item.id_siembra)}>
                                 <p className='text-dark-grey'>{item.fecha_siembra}</p>
                             </Link>
 
