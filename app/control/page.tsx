@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { createClient } from "@/utils/supabase/client";
 import { useStore } from '@/app/store/useStore'
@@ -16,7 +16,6 @@ const Control = () => {
       const { data: cultivosSupabase } = await supabase.from("cultivos").select();
       setCultivos(cultivosSupabase)
     }
-
     getCultivos()
   }, [supabase])
 
