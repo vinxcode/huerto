@@ -24,7 +24,7 @@ const CalendarioCultivo = () => {
   }, [supabase])
 
   return (
-    <article className='bg-white border-2 border-light-green rounded-xl p-4 mt-5 flex flex-col gap-3'>
+    <article className='bg-white  rounded-xl p-4 mt-5 flex flex-col gap-3 shadow-lg'>
       <h3 className='font-semibold text-dark-green'>Calendario de cultivo</h3>
       <div className='flex flex-col gap-2'>
         {
@@ -36,7 +36,7 @@ const CalendarioCultivo = () => {
           ))
         }
       </div>
-      <button className='w-full border-2 border-light-green py-2 rounded-xl text-dark-green hover:bg-light-green hover:text-dark-grey'>Agregar fecha</button>
+      <button className='w-full border-2 bg-light-green border-light-green py-2 rounded-xl text-dark-grey hover:bg-light-green hover:text-dark-green'>Agregar fecha</button>
     </article>
   )
 }
