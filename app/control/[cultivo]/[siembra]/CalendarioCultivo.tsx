@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import { data } from 'autoprefixer'
 
 const CalendarioCultivo = () => {
 
@@ -23,6 +24,8 @@ const CalendarioCultivo = () => {
     getTodosSiembra()
   }, [supabase])
 
+
+  console.log(datos)
   return (
     <article className='bg-white  rounded-xl p-5 mt-5 flex flex-col gap-3 shadow-lg'>
       <h3 className='font-semibold text-dark-green'>Calendario de cultivo</h3>
@@ -34,7 +37,12 @@ const CalendarioCultivo = () => {
                 <p className='text-sm'>{dato.descripcion_pendiente}</p>
                 <p className='text-sm font-light'>{dato.fecha_todo}</p>
               </div>
-              <div className='h-4 w-4 border-2 border-dark-grey rounded-sm left-10'></div>
+              {
+                  dato.is_completed 
+                  ? <span className="icon-[material-symbols--check-box-rounded] text-2xl"></span>
+                  : <span className="icon-[material-symbols--check-box-outline-blank] text-2xl"></span>
+                }
+              
             </div>
           ))
         }
