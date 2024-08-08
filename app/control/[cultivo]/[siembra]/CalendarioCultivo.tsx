@@ -24,14 +24,17 @@ const CalendarioCultivo = () => {
   }, [supabase])
 
   return (
-    <article className='bg-white  rounded-xl p-4 mt-5 flex flex-col gap-3 shadow-lg'>
+    <article className='bg-white  rounded-xl p-5 mt-5 flex flex-col gap-3 shadow-lg'>
       <h3 className='font-semibold text-dark-green'>Calendario de cultivo</h3>
       <div className='flex flex-col gap-2'>
         {
           datos.map((dato, index) => (
-            <div key={index}>
-              <p className='text-sm'>{dato.descripcion_pendiente}</p>
-              <p className='text-sm font-light'>{dato.fecha_todo}</p>
+            <div key={index} className='flex justify-between items-center'>
+              <div>
+                <p className='text-sm'>{dato.descripcion_pendiente}</p>
+                <p className='text-sm font-light'>{dato.fecha_todo}</p>
+              </div>
+              <div className='h-4 w-4 border-2 border-dark-grey rounded-sm left-10'></div>
             </div>
           ))
         }
