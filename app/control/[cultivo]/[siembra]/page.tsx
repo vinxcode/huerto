@@ -1,10 +1,11 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { useStore } from '@/app/store/useStore'
 import { useEffect, useState } from 'react'
+import { useStore } from '@/app/store/useStore' 
 import { createClient } from '@/utils/supabase/client'
 import CalendarioCultivo from './CalendarioCultivo'
+import CrearFecha from './CrearFecha'
 
 const detalleSiembra = () => {
 
@@ -14,7 +15,7 @@ const detalleSiembra = () => {
   const [datos, setDatos] = useState([])
   const updateIsModalFechaOpen = useStore((state) => state.updateIsModalFechaOpen)
   const isModalFechaOpen = useStore((state) => state.isModalFechaOpen)
-
+  
   useEffect(() => {
     const getSiembras = async () => {
       const { data, error } = await supabase
@@ -64,24 +65,7 @@ const detalleSiembra = () => {
         ))
       }
 
-      {
-        isModalFechaOpen &&
-        (
-          <div className=' absolute z-10 flex justify-center items-center w-full h-screen modal animate-in'>
-            <div className='mt-3 flex flex-col gap-2 bg-white shadow-xl p-5 w-11/12 rounded-xl md:w-[700px]'>
-              <p className='text-center font-semibold text-sm'>Agregar nueva fecha importante</p>
-              <div className='flex w-full gap-2 text-sm font-semibold'>
-                <button className='py-3 border-2 border-dark-green text-dark-green w-1/2 rounded-xl'
-                  onClick={() => updateIsModalFechaOpen(false)}
-                >Cancelar</button>
-                <button className='py-3 bg-dark-green text-white w-1/2 rounded-xl'
-                  onClick={() => updateIsModalFechaOpen(false)}
-                >Agregar</button>
-              </div>
-            </div>
-          </div>
-        )
-      }
+      <CrearFecha />
     </>
   )
 }
