@@ -34,7 +34,6 @@ const CrearFecha = () => {
       }
 
       const data = await response.json();
-      console.log('Datos insertados:', data);
       updateIsModalFechaOpen(false)
     } catch (error) {
       console.error('Error al insertar los datos:', error);

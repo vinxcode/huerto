@@ -37,15 +37,20 @@ const CalendarioCultivo = () => {
         {
           datos.map((dato, index) => (
             <div key={index} className='flex justify-between items-center z-0'>
-              <div>
-                <p className='text-sm'>{dato.descripcion_pendiente}</p>
-                <p className='text-sm font-light'>{dato.fecha_todo}</p>
+              <div className='flex items-center gap-2'>
+                <div>
+                  {
+                    dato.is_completed
+                      ? <span className="icon-[material-symbols--check-box-rounded] text-2xl"></span>
+                      : <span className="icon-[material-symbols--check-box-outline-blank] text-2xl"></span>
+                  }
+                </div>
+                <div>
+                  <p className='text-sm'>{dato.descripcion_pendiente}</p>
+                  <p className='text-sm font-light'>{dato.fecha_todo}</p>
+                </div>
               </div>
-              {
-                dato.is_completed
-                  ? <span className="icon-[material-symbols--check-box-rounded] text-2xl"></span>
-                  : <span className="icon-[material-symbols--check-box-outline-blank] text-2xl"></span>
-              }
+              <span className="icon-[typcn--delete] text-2xl"></span>
 
             </div>
           ))
