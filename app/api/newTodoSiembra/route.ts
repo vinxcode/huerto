@@ -6,12 +6,12 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 
 export async function POST(request: any) {
-    const { id_profile, nombre_pupuseria, direccion_pupuseria } = await request.json();
+    const { descripcion_pendiente, fecha_todo, siembra } = await request.json();
 
     try {
         const { data, error } = await supabase
-            .from('profiles')
-            .insert([{ id_profile, nombre_pupuseria, direccion_pupuseria }]);
+            .from('todos_siembra')
+            .insert([{ descripcion_pendiente, fecha_todo, siembra }]);
 
         if (error) {
             throw error;

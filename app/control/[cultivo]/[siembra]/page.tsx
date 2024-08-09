@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { useStore } from '@/app/store/useStore' 
+import { useStore } from '@/app/store/useStore'
 import { createClient } from '@/utils/supabase/client'
 import CalendarioCultivo from './CalendarioCultivo'
 import CrearFecha from './CrearFecha'
@@ -15,7 +15,7 @@ const detalleSiembra = () => {
   const [datos, setDatos] = useState([])
   const updateIsModalFechaOpen = useStore((state) => state.updateIsModalFechaOpen)
   const isModalFechaOpen = useStore((state) => state.isModalFechaOpen)
-  
+
   useEffect(() => {
     const getSiembras = async () => {
       const { data, error } = await supabase
@@ -61,7 +61,9 @@ const detalleSiembra = () => {
               </article>
               <CalendarioCultivo />
             </div>
+
           </section>
+
         ))
       }
 
