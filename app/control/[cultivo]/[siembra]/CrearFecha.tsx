@@ -16,14 +16,6 @@ const CrearFecha = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // setIsSending(true)
-
-    /* if (!pupuserias) {
-      console.error('Pupuserias data is not loaded yet');
-      console.log(pupuserias)
-      return;
-    } */
-
     try {
       const response = await fetch('/api/newTodoSiembra', {
         method: 'POST',
@@ -48,10 +40,8 @@ const CrearFecha = () => {
       console.error('Error al insertar los datos:', error);
     }
 
-    /* updateHasNameAndAddress(true)
-    router.push('./escoger-especialidades');
-    setNombrePupuseria('')
-    setDireccionPupuseria('') */
+    setTodoSiembra('')
+    setFechaSiembra('')
   };
 
   return (
@@ -78,8 +68,6 @@ const CrearFecha = () => {
                   onClick={handleSubmit}
                 >Agregar</button>
               </div>
-              {todoSiembra}
-              {fechaSiembra}
             </div>
           </div>
         )

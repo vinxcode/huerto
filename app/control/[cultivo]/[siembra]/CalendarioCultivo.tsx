@@ -28,7 +28,7 @@ const CalendarioCultivo = () => {
       setDatos(data)
     }
     getTodosSiembra()
-  }, [supabase])
+  }, [supabase, isModalFechaOpen])
 
   return (
     <article className='bg-white  rounded-xl p-5 mt-5 flex flex-col gap-3 shadow-lg'>
