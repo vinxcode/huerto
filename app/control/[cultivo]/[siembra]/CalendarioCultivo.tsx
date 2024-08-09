@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import { useStore } from '@/app/store/useStore'
 
 const CalendarioCultivo = () => {
 
   const supabase = createClient()
   const [datos, setDatos] = useState([])
   const [modalIsOpen, setModalISOpen] = useState(false)
+  const updateIsModalFechaOpen = useStore((state) => state.updateIsModalFechaOpen)
+  const isModalFechaOpen = useStore((state) => state.isModalFechaOpen)
 
   useEffect(() => {
     const getTodosSiembra = async () => {
@@ -45,25 +48,25 @@ const CalendarioCultivo = () => {
           ))
         }
 
-        {
-          modalIsOpen &&
+        {/* {
+          isModalFechaOpen &&
           (
             <div className='z-10 mt-3 flex flex-col gap-2'>
               <p className='text-center font-semibold text-sm'>Agregar nueva fecha importante</p>
               <div className='flex w-full gap-2 text-sm font-semibold'>
                 <button className='py-3 border-2 border-dark-green text-dark-green w-1/2 rounded-xl'
-                  onClick={() => setModalISOpen(false)}
+                  onClick={() => updateIsModalFechaOpen(false)}
                 >Cancelar</button>
                 <button className='py-3 bg-dark-green text-white w-1/2 rounded-xl'
-                  onClick={() => setModalISOpen(false)}
+                  onClick={() => updateIsModalFechaOpen(false)}
                 >Agregar</button>
               </div>
             </div>
           )
-        }
+        } */}
       </div>
       <button className='w-full border-2 font-semibold bg-light-green border-light-green py-2 rounded-xl text-dark-grey hover:bg-light-green hover:text-dark-green'
-        onClick={() => setModalISOpen(true)}
+        onClick={() => updateIsModalFechaOpen(true)}
       >Agregar fecha</button>
     </article>
   )
