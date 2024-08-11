@@ -60,10 +60,10 @@ const CrearFecha = () => {
                 value={fechaSiembra}
                 onChange={(e) => setFechaSiembra(e.target.value)} />
               <div className='flex w-full gap-2 text-sm font-semibold'>
-                <button className='py-3 border-2 border-dark-green text-dark-green w-1/2 rounded-xl'
+                <button className='py-3 border-2 border-dark-green text-dark-green w-2/5 rounded-xl'
                   onClick={() => updateIsModalFechaOpen(false)}
                 >Cancelar</button>
-                <button className='py-3 bg-dark-green text-white w-1/2 rounded-xl'
+                <button className='py-3 bg-dark-green text-white w-3/5 rounded-xl'
                   onClick={handleSubmit}
                 >Agregar</button>
               </div>

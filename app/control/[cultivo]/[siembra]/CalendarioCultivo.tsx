@@ -30,13 +30,39 @@ const CalendarioCultivo = () => {
     getTodosSiembra()
   }, [supabase, isModalFechaOpen])
 
+  const deleteTodo = async (e: any) => {
+    alert(`Deleting ${e}`)
+    try {
+      const response = await fetch('/api/newTodoSiembra', {
+        method: 'ST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          descripcion_pendiente: todoSiembra,
+          fecha_todo: fechaSiembra,
+          siembra: siembra
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud');
+      }
+
+      const data = await response.json();
+      updateIsModalFechaOpen(false)
+    } catch (error) {
+      console.error('Error al insertar los datos:', error);
+    }
+  }
+
   return (
     <article className='bg-white  rounded-xl p-5 mt-5 flex flex-col gap-3 shadow-lg'>
       <h3 className='font-semibold text-dark-green'>Calendario de cultivo</h3>
       <div className='flex flex-col gap-2'>
         {
           datos.map((dato, index) => (
-            <div key={index} className='flex justify-between items-center z-0'>
+            <div key={index} className='flex justify-between items-center z-0 px-4 py-1 rounded-xl'>
               <div className='flex items-center gap-2'>
                 <div>
                   {
@@ -50,7 +76,9 @@ const CalendarioCultivo = () => {
                   <p className='text-sm font-light'>{dato.fecha_todo}</p>
                 </div>
               </div>
-              <span className="icon-[typcn--delete] text-2xl"></span>
+              <span className="icon-[typcn--delete] text-2xl"
+              onClick={() => deleteTodo(dato.id_todo_siembra)}
+              ></span>
 
             </div>
           ))

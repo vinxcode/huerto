@@ -22,3 +22,22 @@ export async function POST(request: any) {
         return new Response(JSON.stringify({ error: e.message }), { status: 500 });
     }
 }
+
+export async function DELETE(request: any) {
+    const { descripcion_pendiente, fecha_todo, siembra } = await request.json();
+
+    try {
+        const response = await supabase
+            .from('todos_siembra')
+            .delete()
+            .eq('id', 1)
+
+        if (error) {
+            throw error;
+        }
+
+        return new Response(JSON.stringify({ data }), { status: 200 });
+    } catch (e: any) {
+        return new Response(JSON.stringify({ error: e.message }), { status: 500 });
+    }
+}
