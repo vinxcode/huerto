@@ -31,17 +31,15 @@ const CalendarioCultivo = () => {
   }, [supabase, isModalFechaOpen])
 
   const deleteTodo = async (e: any) => {
-    alert(`Deleting ${e}`)
+    
     try {
       const response = await fetch('/api/newTodoSiembra', {
-        method: 'ST',
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          descripcion_pendiente: todoSiembra,
-          fecha_todo: fechaSiembra,
-          siembra: siembra
+          id_todo_siembra: e
         })
       });
 
@@ -52,8 +50,10 @@ const CalendarioCultivo = () => {
       const data = await response.json();
       updateIsModalFechaOpen(false)
     } catch (error) {
-      console.error('Error al insertar los datos:', error);
+      console.error('Error al ELIMINAR:', error);
     }
+
+    // updateIsModalFechaOpen(false)
   }
 
   return (
