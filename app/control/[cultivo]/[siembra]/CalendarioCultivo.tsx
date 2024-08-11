@@ -9,7 +9,7 @@ const CalendarioCultivo = () => {
 
   const supabase = createClient()
   const [datos, setDatos] = useState([])
-  const [modalIsOpen, setModalISOpen] = useState(false)
+  const [update, setUpdate] = useState(0)
   const updateIsModalFechaOpen = useStore((state) => state.updateIsModalFechaOpen)
   const isModalFechaOpen = useStore((state) => state.isModalFechaOpen)
 
@@ -28,7 +28,7 @@ const CalendarioCultivo = () => {
       setDatos(data)
     }
     getTodosSiembra()
-  }, [supabase, isModalFechaOpen])
+  }, [supabase, isModalFechaOpen, update])
 
   const deleteTodo = async (e: any) => {
     
@@ -53,7 +53,8 @@ const CalendarioCultivo = () => {
       console.error('Error al ELIMINAR:', error);
     }
 
-    // updateIsModalFechaOpen(false)
+    let value = update
+    setUpdate(value+1)
   }
 
   return (
