@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
 
-const Siembra = () => {
+const Cultivo = () => {
 
     const supabase = createClient()
 
@@ -34,7 +34,7 @@ const Siembra = () => {
                 {/* <h1>{pathname}</h1> */}
             </header>
             <button className='text-center w-11/12 my-3 bg-dark-green text-white px-10 py-3 shadow-xl rounded-xl hover:bg-dark-grey  hover:animate-in'>Agregar siembra</button>
-            <div className='grid grid-cols-2 p-3' >
+            <div className='grid grid-cols-2 p-3 w-11/12' >
                 {
                     siembras && (
                         siembras.map((item, index) => (
@@ -52,4 +52,4 @@ const Siembra = () => {
     )
 }
 
-export default Siembra
+export default Cultivo
