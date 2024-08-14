@@ -5,6 +5,7 @@ import { useStore } from '@/app/store/useStore'
 import { useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
+import CrearCultivo from './CrearCultivo'
 
 const Cultivo = () => {
 
@@ -15,6 +16,7 @@ const Cultivo = () => {
     const idCultivo = useStore((state) => state.idCultivo)
     const uodateIdSiembra = useStore((state) => state.updateIdSiembra)
     const [siembras, setSiembras] = useState([])
+    const updateIsModalSiembraOpen = useStore((state) => state.updateIsModalSiembraOpen)
 
     useEffect(() => {
         const getSiembras = async () => {
@@ -30,8 +32,8 @@ const Cultivo = () => {
     return (
         <section className='w-full flex flex-col items-center'>
             <header className='bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl flex gap-5 items-center'>
-                <Link href={'../control'} 
-                className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></Link>
+                <Link href={'../control'}
+                    className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></Link>
                 <h1 className='text-4xl text-light-grey font-bold'>{cultivo}</h1>
                 {/* <h1>{pathname}</h1> */}
             </header>
@@ -49,12 +51,14 @@ const Cultivo = () => {
                         ))
                     )
                 }
-                <button className='flex items-center gap-2  h-20 bg-light-green p-5 rounded-xl shadow-lg m-2 cursor-pointer hover:bg-light-grey'>
+                <button onClick={() => updateIsModalSiembraOpen(true)}
+                    className='flex items-center gap-2  h-20 bg-light-green p-5 rounded-xl shadow-lg m-2 cursor-pointer hover:bg-light-grey'>
                     <span className="icon-[fluent-mdl2--add] text-lg"></span>
                     Agregar
                 </button>
             </div>
-        </section>
+            <CrearCultivo />
+        </section >
     )
 }
 
