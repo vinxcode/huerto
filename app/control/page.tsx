@@ -21,13 +21,17 @@ const Control = () => {
 
   return (
     <section className='flex flex-col w-full items-start py-10 px-7 animate-in'>
-      <h1 className="text-4xl font-bold ">Control</h1>
+
+      <header className='flex items-center gap-5'>
+        <span className="icon-[ion--md-arrow-round-back] text-dark-grey text-3xl"></span>
+        <h1 className="text-4xl font-bold ">Control</h1>
+      </header>
       <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 shadow-xl rounded-xl hover:bg-dark-grey hover:animate-in'>Agregar cultivo</button>
       {
         cultivos && (
           cultivos.map(cultivo => (
             <Link className='bg-white rounded-xl w-full px-10 py-3 shadow-xl cursor-pointer mb-2'
-            href={`/control/${cultivo.nombre_cultivo}`} onClick={() => updateIdCultivo(cultivo.id_cultivo)}>
+              href={`/control/${cultivo.nombre_cultivo}`} onClick={() => updateIdCultivo(cultivo.id_cultivo)}>
               <h3 className='text-dark-green text-center font-light'>{cultivo.nombre_cultivo}</h3>
             </Link>
           ))
