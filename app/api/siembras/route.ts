@@ -6,12 +6,12 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 
 export async function POST(request: any) {
-    const { nombre_siembra } = await request.json();
+    const { fecha_siembra, cultivo, semillas_a_germinar } = await request.json();
 
     try {
         const { data, error } = await supabase
             .from('siembras')
-            .insert([{ nombre_siembra }]);
+            .insert([{ fecha_siembra, semillas_a_germinar, cultivo }]);
 
         if (error) {
             throw error;
