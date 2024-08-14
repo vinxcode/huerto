@@ -23,7 +23,6 @@ const Control = () => {
     <section className='flex flex-col w-full items-start py-10 px-7 animate-in'>
 
       <header className='flex items-center gap-5'>
-        <span className="icon-[ion--md-arrow-round-back] text-dark-grey text-3xl"></span>
         <h1 className="text-4xl font-bold ">Control</h1>
       </header>
       <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 shadow-xl rounded-xl hover:bg-dark-grey hover:animate-in'>Agregar cultivo</button>

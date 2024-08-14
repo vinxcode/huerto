@@ -6,6 +6,7 @@ import { useStore } from '@/app/store/useStore'
 import { createClient } from '@/utils/supabase/client'
 import CalendarioCultivo from './CalendarioCultivo'
 import CrearFecha from './CrearFecha'
+import Link from 'next/link'
 
 const detalleSiembra = () => {
 
@@ -50,7 +51,7 @@ const detalleSiembra = () => {
         datos.map((dato, index) => (
           <section className='w-full flex flex-col items-center' key={index}>
             <header className='flex items-center gap-5 bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl'>
-              <span className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></span>
+              <Link href={`../${dato.cultivos.nombre_cultivo}`} className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></Link>
               <div className=''>
                 <h1 className='text-4xl text-light-grey font-bold'>{dato.cultivos.nombre_cultivo}</h1>
                 <p className='text-xl text-light-grey'>{dato.fecha_siembra}</p>
