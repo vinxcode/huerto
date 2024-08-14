@@ -57,6 +57,31 @@ const CalendarioCultivo = () => {
     setUpdate(value+1)
   }
 
+  const completeTodo = async (e: any) => {
+
+    try {
+      const response = await fetch('/api/newTodoSiembra', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(e)
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud');
+      }
+
+      const data = await response.json();
+    } catch (error) {
+      console.error('Error al EDITAR:', error);
+    }
+
+    let value = update
+    setUpdate(value+1)
+
+  }
+
   return (
     <article className='bg-white  rounded-xl p-5 mt-5 flex flex-col gap-3 shadow-lg'>
       <h3 className='font-semibold text-dark-green'>Calendario de cultivo</h3>
@@ -68,8 +93,12 @@ const CalendarioCultivo = () => {
                 <div>
                   {
                     dato.is_completed
-                      ? <span className="icon-[material-symbols--check-box-rounded] text-2xl"></span>
-                      : <span className="icon-[material-symbols--check-box-outline-blank] text-2xl"></span>
+                      ? <span className="icon-[material-symbols--check-box-rounded] text-2xl"
+                      onClick={() => completeTodo({id_todo_siembra: dato.id_todo_siembra, is_completed: !dato.is_completed})}
+                      ></span>
+                      : <span className="icon-[material-symbols--check-box-outline-blank] text-2xl"
+                      onClick={() => completeTodo({id_todo_siembra: dato.id_todo_siembra, is_completed: !dato.is_completed})}
+                      ></span>
                   }
                 </div>
                 <div>

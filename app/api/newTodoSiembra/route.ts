@@ -41,3 +41,22 @@ export async function DELETE(request: any) {
         return new Response(JSON.stringify({ error: e.message }), { status: 500 });
     }
 }
+
+export async function PUT(request: any) {
+    const { id_todo_siembra, is_completed } = await request.json();
+
+    try {
+        const {data, error} = await supabase
+            .from('todos_siembra')
+            .update({ is_completed: is_completed })
+            .eq('id_todo_siembra', id_todo_siembra)
+
+        if (error) {
+            throw error;
+        }
+
+        return new Response(JSON.stringify({ data }), { status: 200 });
+    } catch (e: any) {
+        return new Response(JSON.stringify({ error: e.message }), { status: 500 });
+    }
+}
