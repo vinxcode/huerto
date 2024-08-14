@@ -49,9 +49,12 @@ const detalleSiembra = () => {
       {
         datos.map((dato, index) => (
           <section className='w-full flex flex-col items-center' key={index}>
-            <header className='bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl'>
-              <h1 className='text-4xl text-light-grey font-bold'>{dato.cultivos.nombre_cultivo}</h1>
-              <p className='text-xl text-light-grey'>{dato.fecha_siembra}</p>
+            <header className='flex items-center gap-5 bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl'>
+              <span className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></span>
+              <div className=''>
+                <h1 className='text-4xl text-light-grey font-bold'>{dato.cultivos.nombre_cultivo}</h1>
+                <p className='text-xl text-light-grey'>{dato.fecha_siembra}</p>
+              </div>
             </header>
             <div className='flex flex-col p-4 w-full'>
               <article className='flex flex-col text-dark-grey bg-white rounded-xl shadow-lg p-5 w-full'>
