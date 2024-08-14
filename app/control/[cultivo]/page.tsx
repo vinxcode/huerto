@@ -33,8 +33,8 @@ const Cultivo = () => {
                 <h1 className='text-4xl text-light-grey font-bold'>{cultivo}</h1>
                 {/* <h1>{pathname}</h1> */}
             </header>
-            <button className='text-center w-11/12 my-3 bg-dark-green text-white px-10 py-3 shadow-xl rounded-xl hover:bg-dark-grey  hover:animate-in'>Agregar siembra</button>
-            <div className='grid grid-cols-2 p-3 w-11/12' >
+
+            <div className='grid grid-cols-2 p-3 w-11/12 text-sm' >
                 {
                     siembras && (
                         siembras.map((item, index) => (
@@ -47,6 +47,10 @@ const Cultivo = () => {
                         ))
                     )
                 }
+                <button className='flex items-center gap-2  h-20 bg-light-green p-5 rounded-xl shadow-lg m-2 cursor-pointer hover:bg-light-grey'>
+                    <span className="icon-[fluent-mdl2--add] text-lg"></span>
+                    Agregar
+                </button>
             </div>
         </section>
     )
