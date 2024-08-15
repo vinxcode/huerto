@@ -115,7 +115,7 @@ const CalendarioCultivo = () => {
         }
 
       </div>
-      <button className='w-full border-2 font-semibold bg-light-green border-light-green py-2 rounded-xl text-dark-grey hover:bg-light-green hover:text-dark-green'
+      <button className='text-sm w-full border-2 font-semibold bg-light-green border-light-green py-2 rounded-xl text-dark-grey hover:bg-light-green hover:text-dark-green'
         onClick={() => updateIsModalFechaOpen(true)}
       >Agregar fecha</button>
     </article>

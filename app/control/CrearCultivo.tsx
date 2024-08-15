@@ -40,7 +40,7 @@ export default function CrearCultivo() {
             {
                 isModalCultivoOpen && (
                     <div className=' absolute z-11 flex justify-center items-center w-full h-screen modal animate-in'>
-                        <div className='mt-3 flex flex-col gap-3 bg-light-grey shadow-xl p-7 w-11/12 rounded-xl md:w-[600px]'>
+                        <div className='mt-3 flex flex-col gap-3 bg-bg-light-grey shadow-xl p-7 w-11/12 rounded-xl md:w-[600px]'>
                             <h1 className='text-center font-semibold text-lg'>Agregar cultivo</h1>
                             <label className='mb-[-10px]'>Fecha de la siembra</label>
                             <input type="text" placeholder='Ej. Tomate, zanahoria, papa...' className='p-3  rounded-xl'

@@ -37,6 +37,7 @@ const Cultivo = () => {
                     className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></Link>
                 <div className='flex flex-col'>
                     <h1 className='text-4xl text-light-grey font-bold'>{cultivo}</h1>
+                    <p className='text-light-grey text-lg '>Siembras ordenadas por fecha</p>
                 </div>
                 {/* <h1>{pathname}</h1> */}
             </header>
