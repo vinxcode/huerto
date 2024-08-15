@@ -41,7 +41,6 @@ const Control = () => {
           ))
         )
       }
-      className='flex flex-col w-full animate-in items-center'
       <CrearCultivo />
     </>
   )

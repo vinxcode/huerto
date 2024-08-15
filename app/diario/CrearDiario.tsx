@@ -6,9 +6,13 @@ import { useStore } from '@/app/store/useStore'
 export default function CrearDiario() {
     const updateIsModalDiarioOpen = useStore((state) => state.updateIsModalDiarioOpen)
     const isModalDiarioOpen = useStore((state) => state.isModalDiarioOpen)
-    const [fechaSiembra, setFechaSiembra] = useState('')
+    const [notas, setNotas] = useState('')
     const [semillas, setSemillas] = useState(0)
+    const [fecha, setFecha] = useState<string>()
+    const [isNotasDisabled, setIsNotasDisabled] = useState(true)
+    const [text, setText] = useState(false)
 
+    const hoy = new Date()
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
@@ -33,7 +37,7 @@ export default function CrearDiario() {
             console.error('Error al insertar los datos:', error);
         }
 
-        setFechaSiembra('')
+        setNotas('')
         updateIsModalDiarioOpen(false)
         setSemillas(0)
     };
@@ -42,14 +46,37 @@ export default function CrearDiario() {
         <>
             {
                 isModalDiarioOpen && (
-                    <div className=' absolute z-10 flex justify-center items-center w-full h-screen modal animate-in'>
-                        <div className=' flex flex-col gap-3 bg-bg-light-grey shadow-xl p-7 w-full  md:rounded-xl md:w-[600px] h-screen md:h-auto'>
-                            <h1 className='text-center font-semibold text-lg'>Agregar nueva siembra</h1>
-                            <label className='mb-[-10px]'>Fecha de la siembra</label>
-                            <textarea placeholder='Ej. 30 de junio, 21 de julio, etc' className='p-3  rounded-xl'
-                                value={fechaSiembra}
-                                onChange={(e) => setFechaSiembra(e.target.value)}>
+                    <div className=' absolute z-10 flex justify-center items-center w-full h-screen modal'>
+                        <div className=' flex flex-col gap-3 bg-bg-light-grey shadow-xl p-7 w-full  md:rounded-xl md:w-[600px] h-screen md:h-auto animate-in'>
+                            <h1 className='text-center font-semibold text-lg'>Actualizar diario</h1>
+                            <p className='text-center mt-[-12px]'>{hoy.toDateString()}</p>
+                            {/* <div className='flex items-center justify-between mb-2 px-5'>
+                                <label className='mb-[-10px]'>Cuaderno</label>
+                                <button className='icon-[ion--edit]'
+                                onClick={() => setIsNotasDisabled(false)}></button>
+                            </div> */}
+
+                            <div className='flex flex-col bg-white px-4  py-3 text-sm rounded-xl'
+                                onClick={() => setText(true)}>
+                                <p className={`${ text ? "cursor-click" : "cursor-text" }`}>Agregar una nota</p>
+                                {
+                                    text && (
+                                        <textarea placeholder='Notas del dia' className='p-3 focus:border-white focus:ring focus:ring-white focus:outline-none bg-white rounded-xl'
+                                            rows={8}
+                                            value={notas}
+                                            onChange={(e) => setNotas(e.target.value)}
+                                        >
+                                        </textarea>
+                                    )
+                                }
+                            </div>
+                            {/* <textarea placeholder='Notas del dia' className='p-3 bg-bg-light-grey enabled:bg-white rounded-xl'
+                                rows={8} disabled={isNotasDisabled}
+                                value={notas}
+                                onChange={(e) => setNotas(e.target.value)}
+                                >
                             </textarea>
+ */}
 
                             <div className='flex w-full gap-2 text-sm font-semibold'>
                                 <button className='py-3 border-2 border-dark-green text-dark-green w-2/5 rounded-xl'
