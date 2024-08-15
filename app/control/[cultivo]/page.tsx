@@ -17,6 +17,7 @@ const Cultivo = () => {
     const uodateIdSiembra = useStore((state) => state.updateIdSiembra)
     const [siembras, setSiembras] = useState([])
     const updateIsModalSiembraOpen = useStore((state) => state.updateIsModalSiembraOpen)
+    const isModalSiembraOpen = useStore((state) => state.isModalSiembraOpen)
 
     useEffect(() => {
         const getSiembras = async () => {
@@ -27,7 +28,7 @@ const Cultivo = () => {
             setSiembras(data)
         }
         getSiembras()
-    }, [supabase])
+    }, [supabase, isModalSiembraOpen])
 
     return (
         <section className='w-full flex flex-col items-center'>
