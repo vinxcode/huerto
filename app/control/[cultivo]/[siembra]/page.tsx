@@ -45,7 +45,6 @@ const detalleSiembra = () => {
 
   return (
     <>
-      {/* <button className='text-center w-11/12 my-3 bg-dark-green text-white px-10 py-3 shadow-xl rounded-xl hover:bg-dark-grey  hover:animate-in'>Agregar siembra</button> */}
 
       {
         datos.map((dato, index) => (

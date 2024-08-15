@@ -31,7 +31,7 @@ const Cultivo = () => {
     }, [supabase, isModalSiembraOpen])
 
     return (
-        <section className='w-full flex flex-col items-center'>
+        <>
             <header className='bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl flex gap-5 items-center'>
                 <Link href={'../control'}
                     className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></Link>
@@ -39,7 +39,6 @@ const Cultivo = () => {
                     <h1 className='text-4xl text-light-grey font-bold'>{cultivo}</h1>
                     <p className='text-light-grey text-lg '>Siembras ordenadas por fecha</p>
                 </div>
-                {/* <h1>{pathname}</h1> */}
             </header>
 
             <div className='grid grid-cols-2 p-3 w-11/12 text-sm' >
@@ -61,8 +60,9 @@ const Cultivo = () => {
                     Agregar
                 </button>
             </div>
+            className='w-full flex flex-col items-center'
             <CrearSiembra />
-        </section >
+        </ >
     )
 }
 

@@ -19,7 +19,7 @@ export default function CrearDiario() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    
+
                 })
             });
 
@@ -42,13 +42,14 @@ export default function CrearDiario() {
         <>
             {
                 isModalDiarioOpen && (
-                    <div className=' absolute z-11 flex justify-center items-center w-full h-screen modal animate-in'>
-                        <div className='mt-3 flex flex-col gap-3 bg-bg-light-grey shadow-xl p-7 w-11/12 rounded-xl md:w-[600px]'>
+                    <div className=' absolute z-10 flex justify-center items-center w-full h-screen modal animate-in'>
+                        <div className=' flex flex-col gap-3 bg-bg-light-grey shadow-xl p-7 w-11/12 rounded-xl md:w-[600px] h-screen'>
                             <h1 className='text-center font-semibold text-lg'>Agregar nueva siembra</h1>
                             <label className='mb-[-10px]'>Fecha de la siembra</label>
-                            <input type="text" placeholder='Ej. 30 de junio, 21 de julio, etc' className='p-3  rounded-xl'
+                            <textarea placeholder='Ej. 30 de junio, 21 de julio, etc' className='p-3  rounded-xl'
                                 value={fechaSiembra}
-                                onChange={(e) => setFechaSiembra(e.target.value)} />
+                                onChange={(e) => setFechaSiembra(e.target.value)}>
+                            </textarea>
 
                             <div className='flex w-full gap-2 text-sm font-semibold'>
                                 <button className='py-3 border-2 border-dark-green text-dark-green w-2/5 rounded-xl'

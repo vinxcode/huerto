@@ -23,7 +23,7 @@ const Navigation = () => {
     const pathname = usePathname()
 
     return (
-        <>
+        <div className='w-full h-full py-5 flex justify-evenly'>
             {
                 nav.map(link => (
                     <Link href={link.route} className={`flex flex-col justify-center items-center gap-2 ${pathname.includes(link.route) ? 'text-dark-green border-b-2 border-dark-green ' : ""}`}>
@@ -34,7 +34,7 @@ const Navigation = () => {
 
             }
 
-        </>
+        </div>
     )
 }
 

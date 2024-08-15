@@ -23,7 +23,7 @@ const Control = () => {
   }, [supabase, isModalCultivoOpen])
 
   return (
-    <section className='flex flex-col w-full items-start animate-in items-center'>
+    < >
 
       <header className='flex items-center gap-5 px-7 mt-10'>
         <h1 className="text-4xl font-bold ">Control</h1>
@@ -41,9 +41,9 @@ const Control = () => {
           ))
         )
       }
-
+      className='flex flex-col w-full animate-in items-center'
       <CrearCultivo />
-    </section>
+    </>
   )
 }
 

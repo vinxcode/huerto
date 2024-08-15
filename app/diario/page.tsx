@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import { createClient } from "@/utils/supabase/client";
 import CrearDiario from './CrearDiario';
 import { useStore } from '@/app/store/useStore'
@@ -24,23 +24,26 @@ const Diario = () => {
     }, [supabase, isModalDiarioOpen])
 
     return (
-        <section className='flex flex-col w-full items-start py-10 px-7 animate-in'>
-            <h1 className="text-4xl font-bold ">Diario</h1>
-            <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 rounded-xl shadow-lg hover:bg-dark-grey hover:animate-in'
-            onClick={() => updateIsModalDiarioOpen(true)}
-            >Actualizar diario</button>
-            {
-                listaDiarios && (
-                    listaDiarios.map(diario => (
-                        <a className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2 w-full shadow-lg'>
-                            <p className='text-dark-green'>{diario.fecha}</p>
-                            <p>{diario.notas}</p>
-                        </a>
-                    ))
-                )
-            }
-        <CrearDiario/>
-        </section>
+        <>
+            <section className='flex flex-col w-full items-start py-10 px-7 animate-in' >
+                <h1 className="text-4xl font-bold ">Diario</h1>
+                <button className='text-center w-full my-3 bg-dark-green text-white px-10 py-3 rounded-xl shadow-lg hover:bg-dark-grey hover:animate-in'
+                    onClick={() => updateIsModalDiarioOpen(true)}
+                >Actualizar diario</button>
+                {
+                    listaDiarios && (
+                        listaDiarios.map(diario => (
+                            <a className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2 w-full shadow-lg'>
+                                <p className='text-dark-green'>{diario.fecha}</p>
+                                <p>{diario.notas}</p>
+                            </a>
+                        ))
+                    )
+                }
+            </section>
+
+            <CrearDiario />
+        </>
     )
 }
 
