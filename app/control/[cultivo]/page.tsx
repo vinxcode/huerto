@@ -35,7 +35,9 @@ const Cultivo = () => {
             <header className='bg-dark-green h-[120px] w-full py-10 px-7 rounded-b-3xl flex gap-5 items-center'>
                 <Link href={'../control'}
                     className="icon-[ion--md-arrow-round-back] text-light-grey text-3xl"></Link>
-                <h1 className='text-4xl text-light-grey font-bold'>{cultivo}</h1>
+                <div className='flex flex-col'>
+                    <h1 className='text-4xl text-light-grey font-bold'>{cultivo}</h1>
+                </div>
                 {/* <h1>{pathname}</h1> */}
             </header>
 
