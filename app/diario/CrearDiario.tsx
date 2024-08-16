@@ -86,7 +86,7 @@ export default function CrearDiario() {
                                 <div className='flex flex-col bg-white px-4  py-3 text-sm rounded-xl shadow-lg'>
                                     {
                                         isNotaHead && (
-                                            <div className='w-full bg-dark-green' onClick={handleOpenTextArea}>
+                                            <div className='w-full' onClick={handleOpenTextArea}>
                                                 <p className={`${isTextArea ? "cursor-click" : "cursor-text"} text-center md:text-left`}>Agregar notas del dia</p>
                                             </div>
                                         )
