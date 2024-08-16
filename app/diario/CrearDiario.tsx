@@ -7,13 +7,12 @@ export default function CrearDiario() {
     const updateIsModalDiarioOpen = useStore((state) => state.updateIsModalDiarioOpen)
     const isModalDiarioOpen = useStore((state) => state.isModalDiarioOpen)
     const [notas, setNotas] = useState('')
-    const [semillas, setSemillas] = useState(0)
-    const [fecha, setFecha] = useState<string>()
-    const [isNotasDisabled, setIsNotasDisabled] = useState(true)
-    const [text, setText] = useState(false)
-    const [isNota, setIsNota] = useState(false)
+    const [isTextArea, setIsTextArea] = useState(false)
+    const [isDivNota, setIsDivNota] = useState(false)
+    const [isNotaHead, setIsNotaHead] = useState(true)
 
     const hoy = new Date()
+
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
@@ -41,27 +40,36 @@ export default function CrearDiario() {
 
         setNotas('')
         updateIsModalDiarioOpen(false)
-        setSemillas(0)
-        setText(false)
+        setIsTextArea(false)
     };
 
     const handleCancelar = () => {
         updateIsModalDiarioOpen(false)
-        setText(false)
+        setIsTextArea(false)
     }
 
     const handleGuardar = () => {
         // Manera provisional de actualizar el estado porque por alguna razon no se rerenderiza como
         // normalmente lo haria
         setTimeout(() => {
-            setText(false);
+            setIsTextArea(false);
         }, 10)
-        setIsNota(true)
+
+        if (notas !== "") {
+            setIsDivNota(true)
+        } else {
+            setIsNotaHead(true)
+        }
     }
 
     const handleEditNota = () => {
-        setIsNota(false)
-        setText(true)
+        setIsDivNota(false)
+        setIsTextArea(true)
+    }
+
+    const handleOpenTextArea = () => {
+        setIsTextArea(true)
+        setIsNotaHead(false)
     }
 
     return (
@@ -75,11 +83,16 @@ export default function CrearDiario() {
                                 <p className='text-center mt-[-12px]'>{hoy.toDateString()}</p>
 
 
-                                <div className='flex flex-col bg-white px-4  py-3 text-sm rounded-xl shadow-lg'
-                                    onClick={() => setText(true)}>
-                                    <p className={`${text ? "cursor-click" : "cursor-text"} text-center md:text-left`}>Agregar notas del dia</p>
+                                <div className='flex flex-col bg-white px-4  py-3 text-sm rounded-xl shadow-lg'>
                                     {
-                                        isNota && (
+                                        isNotaHead && (
+                                            <div className='w-full bg-dark-green' onClick={handleOpenTextArea}>
+                                                <p className={`${isTextArea ? "cursor-click" : "cursor-text"} text-center md:text-left`}>Agregar notas del dia</p>
+                                            </div>
+                                        )
+                                    }
+                                    {
+                                        isDivNota && (
                                             <div onClick={handleEditNota}
                                                 className='p-3 mt-2 focus:border-white focus:ring focus:ring-white focus:outline-none bg-white rounded-xl'>
                                                 {notas}
@@ -87,7 +100,7 @@ export default function CrearDiario() {
                                         )
                                     }
                                     {
-                                        text && (
+                                        isTextArea && (
                                             <div>
                                                 <textarea placeholder='Notas del dia'
                                                     className='p-3 mt-2 focus:border-white focus:ring focus:ring-white focus:outline-none bg-white rounded-xl w-full'
