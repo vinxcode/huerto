@@ -46,6 +46,7 @@ export default function CrearDiario() {
     const handleCancelar = () => {
         updateIsModalDiarioOpen(false)
         setIsTextArea(false)
+        setIsNotaHead(true)
     }
 
     const handleGuardar = () => {
