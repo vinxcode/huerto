@@ -49,6 +49,14 @@ export default function CrearDiario() {
         setText(false)
     }
 
+    const handleGuardar = () => {
+        // Manera provisional de actualizar el estado porque por alguna razon no se rerenderiza como
+        // normalmente lo haria
+        setTimeout(() => {
+            setText(false);
+        }, 10)
+    }
+
     return (
         <>
             {
@@ -62,9 +70,9 @@ export default function CrearDiario() {
 
                                 <div className='flex flex-col bg-white px-4  py-3 text-sm rounded-xl shadow-lg'
                                     onClick={() => setText(true)}>
-                                    <p className={`${text ? "cursor-click" : "cursor-text"} text-center md:text-left`}>Agregar una nota</p>
+                                    <p className={`${text ? "cursor-click" : "cursor-text"} text-center md:text-left`}>Agregar notas del dia</p>
                                     {
-                                        text && (
+                                        text ? (
                                             <div>
                                                 <textarea placeholder='Notas del dia' className='p-3 mt-2 focus:border-white focus:ring focus:ring-white focus:outline-none bg-white rounded-xl'
                                                     rows={8}
@@ -72,12 +80,14 @@ export default function CrearDiario() {
                                                     onChange={(e) => setNotas(e.target.value)}
                                                 >
                                                 </textarea>
-                                                <div className='flex justify-end px-7'>
-                                                    <button className='flex items-center'><span className="icon-[lets-icons--done] text-lg"></span>Guardar</button>
+                                                <div className='flex justify-end px-7' >
+                                                    <button className='flex items-center'
+                                                    onClick={handleGuardar}
+                                                    ><span className="icon-[lets-icons--done] text-lg"></span>Guardar</button>
                                                 </div>
                                             </div>
-                                        )
-                                    }
+                                        ): (<p>NEEEEEL</p>)
+                                    } 
 
                                 </div>
 

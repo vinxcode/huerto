@@ -34,7 +34,7 @@ const Diario = () => {
                     listaDiarios && (
                         listaDiarios.map(diario => (
                             <a className='text-sm flex flex-col gap-1 bg-white p-4 rounded-xl font-light mb-2 w-full shadow-lg'>
-                                <p className='text-dark-green'>{diario.fecha}</p>
+                                <p className='text-dark-green font-semibold'>{diario.fecha}</p>
                                 <p>{diario.notas}</p>
                             </a>
                         ))
