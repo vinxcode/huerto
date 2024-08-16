@@ -1,4 +1,5 @@
-<h1 align="center">App HUERTO EN CASA</h1><img alt="Screenshot" src="./ss/hero.png" style="width: 70px,">
+<h1 align="center">App HUERTO EN CASA</h1>
+<img alt="Screenshot" src="./ss/hero.png">
 
 
 <p align="center">
@@ -30,3 +31,5 @@ En la app Huerto en Casa podemos administrar la información de nuestros cultivo
 - Tailwind
 - Supabase
 - Yesicons
+
+<img alt="Screenshot" src="./ss/1.png">
