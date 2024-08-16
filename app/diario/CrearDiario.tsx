@@ -11,6 +11,7 @@ export default function CrearDiario() {
     const [fecha, setFecha] = useState<string>()
     const [isNotasDisabled, setIsNotasDisabled] = useState(true)
     const [text, setText] = useState(false)
+    const [isNota, setIsNota] = useState(false)
 
     const hoy = new Date()
     const handleSubmit = async (e: any) => {
@@ -55,6 +56,12 @@ export default function CrearDiario() {
         setTimeout(() => {
             setText(false);
         }, 10)
+        setIsNota(true)
+    }
+
+    const handleEditNota = () => {
+        setIsNota(false)
+        setText(true)
     }
 
     return (
@@ -72,9 +79,18 @@ export default function CrearDiario() {
                                     onClick={() => setText(true)}>
                                     <p className={`${text ? "cursor-click" : "cursor-text"} text-center md:text-left`}>Agregar notas del dia</p>
                                     {
-                                        text ? (
+                                        isNota && (
+                                            <div onClick={handleEditNota}
+                                                className='p-3 mt-2 focus:border-white focus:ring focus:ring-white focus:outline-none bg-white rounded-xl'>
+                                                {notas}
+                                            </div>
+                                        )
+                                    }
+                                    {
+                                        text && (
                                             <div>
-                                                <textarea placeholder='Notas del dia' className='p-3 mt-2 focus:border-white focus:ring focus:ring-white focus:outline-none bg-white rounded-xl'
+                                                <textarea placeholder='Notas del dia'
+                                                    className='p-3 mt-2 focus:border-white focus:ring focus:ring-white focus:outline-none bg-white rounded-xl w-full'
                                                     rows={8}
                                                     value={notas}
                                                     onChange={(e) => setNotas(e.target.value)}
@@ -82,12 +98,12 @@ export default function CrearDiario() {
                                                 </textarea>
                                                 <div className='flex justify-end px-7' >
                                                     <button className='flex items-center'
-                                                    onClick={handleGuardar}
+                                                        onClick={handleGuardar}
                                                     ><span className="icon-[lets-icons--done] text-lg"></span>Guardar</button>
                                                 </div>
                                             </div>
-                                        ): (<p>NEEEEEL</p>)
-                                    } 
+                                        )
+                                    }
 
                                 </div>
 
