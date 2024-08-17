@@ -1,5 +1,12 @@
 'use client'
 
+type TodoSiembra = {
+  id_todo_siembra: number,
+  descripcion_pendiente: string,
+  fecha_todo: string,
+  is_completed: boolean
+}
+
 import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import { useStore } from '@/app/store/useStore'
@@ -8,7 +15,7 @@ import { useParams } from 'next/navigation'
 const CalendarioCultivo = () => {
 
   const supabase = createClient()
-  const [datos, setDatos] = useState([])
+  const [datos, setDatos] = useState<TodoSiembra[]>([])
   const [update, setUpdate] = useState(0)
   const updateIsModalFechaOpen = useStore((state) => state.updateIsModalFechaOpen)
   const isModalFechaOpen = useStore((state) => state.isModalFechaOpen)
@@ -25,7 +32,7 @@ const CalendarioCultivo = () => {
         fecha_todo,
         is_completed`)
         .eq('siembra', siembra)
-      setDatos(data)
+      setDatos(data as TodoSiembra[])
     }
     getTodosSiembra()
   }, [supabase, isModalFechaOpen, update])

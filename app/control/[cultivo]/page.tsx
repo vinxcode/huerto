@@ -7,6 +7,11 @@ import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
 import CrearSiembra from './CrearSiembra'
 
+type Siembra = {
+    id_siembra: number, 
+    fecha_siembra: string
+}
+
 const Cultivo = () => {
 
     const supabase = createClient()
@@ -14,8 +19,8 @@ const Cultivo = () => {
     const pathname = usePathname()
     const { cultivo } = useParams()
     const idCultivo = useStore((state) => state.idCultivo)
-    const uodateIdSiembra = useStore((state) => state.updateIdSiembra)
-    const [siembras, setSiembras] = useState([])
+    const updateIdSiembra = useStore((state) => state.updateIdSiembra)
+    const [siembras, setSiembras] = useState<Siembra[]>([])
     const updateIsModalSiembraOpen = useStore((state) => state.updateIsModalSiembraOpen)
     const isModalSiembraOpen = useStore((state) => state.isModalSiembraOpen)
 
@@ -23,9 +28,12 @@ const Cultivo = () => {
         const getSiembras = async () => {
             const { data, error } = await supabase
                 .from('siembras')
-                .select()
+                .select(`
+                    id_siembra,
+                    fecha_siembra
+                `)
                 .eq('cultivo', idCultivo)
-            setSiembras(data)
+            setSiembras(data as Siembra[])
         }
         getSiembras()
     }, [supabase, isModalSiembraOpen])

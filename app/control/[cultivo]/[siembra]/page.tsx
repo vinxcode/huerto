@@ -1,5 +1,22 @@
 'use client'
 
+type Cultivos = {
+  nombre_cultivo: string
+}
+
+type EstadoCultivos = {
+  id_estado_cultivo: number,
+  nombre_estado_cultivo: string
+}
+
+type Siembra = {
+  id_siembra: number,
+  fecha_siembra: string,
+  semillas_a_germinar: number,
+  cultivos: Cultivos,
+  estado_cultivos: EstadoCultivos
+}
+
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useStore } from '@/app/store/useStore'
@@ -11,9 +28,10 @@ import Link from 'next/link'
 const detalleSiembra = () => {
 
   const supabase = createClient()
-
+  
   const { siembra } = useParams()
-  const [datos, setDatos] = useState([])
+  
+  const [datos, setDatos] = useState<Siembra[]>([])
   const updateIsModalFechaOpen = useStore((state) => state.updateIsModalFechaOpen)
   const isModalFechaOpen = useStore((state) => state.isModalFechaOpen)
 
@@ -25,9 +43,6 @@ const detalleSiembra = () => {
           id_siembra,
           fecha_siembra,
           semillas_a_germinar,
-          semillas_germinadas,
-          plantines_trasplantados,
-
           cultivos (
             nombre_cultivo
           ),
@@ -38,10 +53,16 @@ const detalleSiembra = () => {
 
         `)
         .eq('id_siembra', siembra)
-      setDatos(data)
+      if (error) {
+        console.error('Error fetching siembras:', error);
+      } else if (data) {
+        setDatos(data as any);
+      } else {
+        console.error('No data found');
+      }
     }
     getSiembras()
-  }, [supabase])
+  }, [supabase, siembra, isModalFechaOpen])
 
   return (
     <>
@@ -64,7 +85,6 @@ const detalleSiembra = () => {
               </article>
               <CalendarioCultivo />
             </div>
-
           </section>
 
         ))

@@ -5,9 +5,15 @@ import { createClient } from "@/utils/supabase/client";
 import CrearDiario from './CrearDiario';
 import { useStore } from '@/app/store/useStore'
 
+type Diario = {
+    id_diario: number,
+    notas: string,
+    fecha: string
+}
+
 const Diario = () => {
 
-    const [listaDiarios, setListaDiarios] = useState([])
+    const [listaDiarios, setListaDiarios] = useState<Diario[]>([])
     const updateIsModalDiarioOpen = useStore((state) => state.updateIsModalDiarioOpen)
     const isModalDiarioOpen = useStore((state) => state.isModalDiarioOpen)
 
@@ -18,7 +24,7 @@ const Diario = () => {
             const { data: diarios } = await supabase
                 .from('diarios')
                 .select()
-            setListaDiarios(diarios)
+            setListaDiarios(diarios as Diario[])
         }
         getDiarios()
     }, [supabase, isModalDiarioOpen])

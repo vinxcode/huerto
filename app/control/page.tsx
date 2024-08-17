@@ -1,5 +1,10 @@
 'use client'
 
+type Cultivo = {
+  id_cultivo: number,
+  nombre_cultivo: string
+}
+
 import { useEffect, useState } from 'react'
 import Link from 'next/link';
 import { createClient } from "@/utils/supabase/client";
@@ -12,12 +17,12 @@ const Control = () => {
   const updateIdCultivo = useStore((state) => state.updateIdCultivo)
   const updateIsModalCultivoOpen = useStore((state) => state.updateIsModalCultivoOpen)
   const isModalCultivoOpen = useStore((state) => state.isModalCultivoOpen)
-  const [cultivos, setCultivos] = useState([])
+  const [cultivos, setCultivos] = useState<Cultivo[]>([])
 
   useEffect(() => {
     const getCultivos = async () => {
       const { data: cultivosSupabase } = await supabase.from("cultivos").select();
-      setCultivos(cultivosSupabase)
+      setCultivos(cultivosSupabase as Cultivo[])
     }
     getCultivos()
   }, [supabase, isModalCultivoOpen])
